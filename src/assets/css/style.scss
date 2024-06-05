@@ -1,0 +1,18 @@
+// src/assets/css/style.scss
+body {
+  display: inherit;
+  place-items: inherit;
+}
+#app {
+  text-align: inherit;
+  padding: inherit;
+  max-width: inherit;
+  margin: inherit;
+  display: inherit;
+}
+// Scroll Bar
+@import './Scrollbar/scrollbar';
+//
+@import './Products/Products';
+//
+@import './Products/Product';
