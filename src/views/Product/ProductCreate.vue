@@ -104,6 +104,19 @@
                   />
                 </div>
               </div>
+              <!-- 🖼️ صورة المنتج -->
+              <!-- <div class="mb-3">
+                <label class="form-label" for="product_image_cover_thumbnail">🖼️ صورة المنتج</label>
+                <div class="control">
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="product_image_cover_thumbnail"
+                    id="product_image_cover_thumbnail"
+                    @change="handleFileUploadCoverThumbnail"
+                  />
+                </div>
+              </div> -->
             </div>
             <div class="col-lg-6">
               <!-- 💵 سعر الشراء -->
@@ -300,6 +313,7 @@ export default {
         product_small_wholesale_price: null,
         product_discount: null,
         product_material: ''
+        // product_image_cover_thumbnail: ''
       },
       statusChoices: [
         { value: 'available', text: 'متاح' },
@@ -394,13 +408,25 @@ export default {
         .catch((error) => {
           console.log(JSON.stringify(error))
         })
+      // Sand Data To Json Server
+      const doc = this.product
+      fetch('http://localhost:3000/products', {
+        method: 'POST',
+        body: JSON.stringify(doc),
+        headers: { 'Content-Type': 'application/json' }
+      }).then((response) => {
+        console.log('response: ', response)
+        this.$router.push('/ProductsList')
+      })
     }
   }
 }
 </script>
+
 <!-- 
   cd tom_and_jerry_vue
   npm run dev
+  json-server --watch src\data\products.json
   __________________________________________
   Name           = Hossam Rashad
   Personal Phone = 01091642528

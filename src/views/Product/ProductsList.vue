@@ -3,17 +3,24 @@
     <div class="inner_add_product_page">
       <div class="container">
         <h1 class="text-center my-5">T&J Products</h1>
-        <div class="row">
-          <div class="col-md-4 mb-4" v-for="product in products" v-bind:key="product.id">
+        <div class="row row-cols-md-3 row-cols-sm-1">
+          <div class="col mb-4" v-for="product in products" v-bind:key="product.id">
             <!-- style="width: 18rem" -->
-            <div class="card">
+            <div class="card shadow-lg p-3 mb-5 bg-body rounded">
               <img
-                v-if="product.get_product_image_cover"
-                :src="product.get_product_image_cover"
-                alt="..."
+                v-if="product.product_image_cover_thumbnail"
+                alt="If product image cover thumbnail "
+                :src="completeImagePath(product.product_image_cover_thumbnail)"
+                class="card-img-top rounded img-fluid"
+                style="max-height: 250px; height: 250px"
               />
-              <img v-else src="https://picsum.photos/1920/1920" class="card-img-top" alt="..." />
-
+              <img
+                v-else
+                src="https://picsum.photos/1920/1920"
+                class="card-img-top rounded"
+                alt="Else"
+                style="max-height: 350px; height: 350px"
+              />
               <div class="card-body">
                 <h5 class="card-title">{{ product.product_name_ar }}</h5>
                 <h5 class="card-title">{{ product.product_name_en }}</h5>
@@ -72,6 +79,12 @@ export default {
         .catch((error) => {
           console.log('error', error)
         })
+    },
+    completeImagePath(path) {
+      if (!path.startsWith('http://') && !path.startsWith('https://')) {
+        return `http://127.0.0.1:8000/${path}`
+      }
+      return path
     }
   }
 }
@@ -80,6 +93,7 @@ export default {
 <!-- 
   cd tom_and_jerry_vue
   npm run dev
+  json-server --watch src\data\products.json
   __________________________________________
   Name           = Hossam Rashad
   Personal Phone = 01091642528

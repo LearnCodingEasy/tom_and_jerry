@@ -2,68 +2,51 @@
 <template>
   <div class="page_product">
     <div class="container">
-      <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul class="mt-6">
-          <li class="button is-normal">
-            <router-link to="/PageDashboard">Dashboard</router-link>
-          </li>
-          <li class="button is-normal">
-            <router-link to="/ProductsList">products</router-link>
-          </li>
-          <li class="is-active button is-normal">
-            <!-- :to="{ name: 'PageProduct', params: { id: product.id } }" -->
-            <!-- <router-link
-              :to="{ name: 'PageProduct', params: { slug: product.slug } }"
-              aria-current="true"
-            >
-              {{ product.slug }}
-            </router-link> -->
-          </li>
-          <li class="button is-normal">
-            <!-- <router-link :to="{ name: 'PageEditIdProduct', params: { id: product.id } }"
-              >Edit Id {{ product.id }}</router-link
-            > -->
-          </li>
-          <!-- <li class="button is-normal">
-            <router-link :to="{ name: 'PageEditProduct', params: { slug: product.slug } }"
-              >Edit Slug</router-link
-            >
-          </li> -->
-        </ul>
-      </nav>
-
-      <div class="columns is-multiline">
-        <div class="column is-12">
-          <div class="product_title">
-            <h2 class="title en" dir="aut">{{ product.product_name_en }}</h2>
-            <h2 class="title ar" dir="aut">{{ product.product_name_ar }}</h2>
-          </div>
-          <div class="buttons_helpers">
-            <!-- <button @click="getPdf()" class="button button_download_pdf id-dark mt-4">
+      <!-- Start links_page_come_from -->
+      <div class="links_page_come_from">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <router-link to="/ProductsList">products</router-link>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ product.product_name_en }}
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <!-- End links_page_come_from -->
+      <!-- Start Product Name -->
+      <div class="row">
+        <div class="col">
+          <h2 class="title en">{{ product.product_name_en }}</h2>
+        </div>
+        <div class="col">
+          <h2 class="title ar" dir="aut">{{ product.product_name_ar }}</h2>
+        </div>
+        <div class="buttons_helpers">
+          <!-- <button @click="getPdf()" class="button button_download_pdf id-dark mt-4">
               Download Pdf
             </button> -->
-            <!-- <button @click="download()" class="button id-dark mt-4">Download Pdf download</button> -->
-            <!-- <button @click="printBarcode" class="button button_print_barcode is-9by16 mt-4">
+          <!-- <button @click="download()" class="button id-dark mt-4">Download Pdf download</button> -->
+          <!-- <button @click="printBarcode" class="button button_print_barcode is-9by16 mt-4">
               Print Barcode
             </button> -->
-          </div>
         </div>
-        <!-- card -->
+      </div>
+      <!-- End Product Name -->
+      <!-- card -->
+      <div class="row">
         <div class="column is-12">
           <div class="card">
             <div class="card-image card_image">
-              <figure
-                class="image is-1by1"
-                v-if="selectedPhoto"
-                :style="{ 'background-image': selectedPhoto }"
-              >
-                <template v-if="product.product_image_cover">
+              <figure class="image is-1by1">
+                <template v-if="product.get_product_image_cover">
                   <img :src="product.get_product_image_cover" :alt="product.product_name_en" />
                 </template>
               </figure>
-
               <!-- مجموعة من الصور -->
-              <div class="column is-12">
+              <div class="column is-12" v-if="product.product_image">
                 <h2 class="title pr-3" dir="auto">مجموعة من الصور</h2>
                 <div class="product_images box">
                   <div v-for="image in product.product_image" :key="image.id">
@@ -73,31 +56,10 @@
               </div>
             </div>
             <div class="card-content">
-              <div class="media">
-                <!-- <div class="media-left">
-                  <figure class="image is-48x48">
-                    <img
-                      src="../../assets/images/tom_and_jerry.png"
-                      alt="Placeholder image"
-                      class="round"
-                    />
-                  </figure>
-                </div> -->
-                <div class="media-content">
-                  <p class="title is-4">Tom & Jerry</p>
-                  <p class="subtitle is-6">@admin</p>
-                </div>
-              </div>
               <div class="content">
-                <div style="direction: rtl">
-                  <span dir="auto" class="subtitle"> {{ product.product_short_description }}</span>
-                </div>
-                <br />
-                <br />
                 <a>@TomJerry</a>
                 <a href="#">#TomJerry</a>
                 <a href="#">#TomJerryStore</a>
-                <br />
                 <br />
                 <time :datetime="product.product_last_modified">{{
                   product.product_last_modified
@@ -106,12 +68,14 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="row">
         <!--  وصف المنتج [البيانات]  -->
-        <div class="column is-12">
+        <div class="column is-12" v-if="product.product_long_description">
           <h2 class="title pr-3" dir="auto">وصف المنتج</h2>
           <div class="product_description box">
             <div class="product_text">
-              <div v-if="product.product_long_description" dir="auto" class="product_text_data">
+              <div dir="auto" class="product_text_data">
                 <span class="subtitle">
                   {{ product.product_long_description }}
                 </span>
@@ -603,4 +567,24 @@ export default {
         this.isProductOwner = this.product.created_by === this.userProfile.id
       }
     }
+-->
+
+<!-- 
+  cd tom_and_jerry_vue
+  npm run dev
+  json-server --watch src\data\products.json
+  __________________________________________
+  Name           = Hossam Rashad
+  Personal Phone = 01091642528
+  Public Phone   = 01101853042
+  Address        = Egypt
+  E-mail         = learncodingeasy@yahoo.com
+  Password       = zxc123456789
+  __________________________________________
+  Name           = Hossam Rashad
+  Personal Phone = 01091642528
+  Public Phone   = 01101853042
+  Address        = Egypt
+  E-mail         = bibo2010508@yahoo.com
+  Password       = zxc123456789
 -->

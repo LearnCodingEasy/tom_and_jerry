@@ -136,7 +136,7 @@ export default {
       console.log('email: ', 'Is Owner')
       this.canCreateProduct = true
     } else {
-      console.log('email: ', 'Is Cliente')
+      console.log('email: ', 'Is Client')
     }
      */
   },
@@ -156,6 +156,7 @@ export default {
 <!-- 
   cd tom_and_jerry_vue
   npm run dev
+  json-server --watch src\data\products.json
   __________________________________________
   Name           = Hossam Rashad
   Personal Phone = 01091642528
