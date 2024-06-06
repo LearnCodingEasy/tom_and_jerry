@@ -15,7 +15,6 @@
           </ol>
         </nav>
       </div>
-      <!-- End links_page_come_from -->
       <!-- Start Product Name -->
       <div class="row">
         <div class="col">
@@ -34,46 +33,44 @@
             </button> -->
         </div>
       </div>
-      <!-- End Product Name -->
       <!-- card -->
       <div class="row">
-        <div class="column is-12">
+        <div class="col">
           <div class="card">
-            <div class="card-image card_image">
-              <figure class="image is-1by1">
-                <template v-if="product.get_product_image_cover">
-                  <img :src="product.get_product_image_cover" :alt="product.product_name_en" />
-                </template>
-              </figure>
-              <!-- مجموعة من الصور -->
-              <div class="column is-12" v-if="product.product_image">
-                <h2 class="title pr-3" dir="auto">مجموعة من الصور</h2>
-                <div class="product_images box">
-                  <div v-for="image in product.product_image" :key="image.id">
-                    <img :src="image.product_image_url" :alt="image.product_image_name" />
-                  </div>
+            <figure class="figure">
+              <template v-if="product.get_product_image_cover">
+                <img
+                  :src="product.get_product_image_cover"
+                  :alt="product.product_name_en"
+                  class="card-img-top"
+                />
+              </template>
+            </figure>
+            <!-- مجموعة من الصور -->
+            <div class="row" v-if="product.product_image">
+              <h2 class="title pr-3" dir="auto">مجموعة من الصور</h2>
+              <div class="col product_images box">
+                <div v-for="image in product.product_image" :key="image.id">
+                  <img :src="image.product_image_url" :alt="image.product_image_name" />
                 </div>
               </div>
             </div>
-            <div class="card-content">
-              <div class="content">
-                <a>@TomJerry</a>
-                <a href="#">#TomJerry</a>
-                <a href="#">#TomJerryStore</a>
-                <br />
-                <time :datetime="product.product_last_modified">{{
-                  product.product_last_modified
-                }}</time>
-              </div>
+            <div class="card-body">
+              <router-link to="/" class="m-1">@TomJerry</router-link>
+              <router-link to="/" class="m-1">#TomJerry</router-link>
+              <router-link to="/" class="m-1">#TomJerryStore</router-link>
+              <time class="m-2" :datetime="product.product_last_modified">{{
+                product.product_last_modified
+              }}</time>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <!--  وصف المنتج [البيانات]  -->
-        <div class="column is-12" v-if="product.product_long_description">
+      <!--  وصف المنتج [البيانات]  -->
+      <div class="row" v-if="product.product_long_description">
+        <div class="col">
           <h2 class="title pr-3" dir="auto">وصف المنتج</h2>
-          <div class="product_description box">
+          <div class="product_description">
             <div class="product_text">
               <div dir="auto" class="product_text_data">
                 <span class="subtitle">
@@ -83,9 +80,11 @@
             </div>
           </div>
         </div>
-        <!--  البيانات الشراء [البيانات]  -->
+      </div>
+      <!--  البيانات الشراء [البيانات]  -->
+      <div class="row">
         <!-- v-if="isProductOwner" -->
-        <div class="column is-12">
+        <div class="col">
           <h2 class="title pr-3" dir="auto">بيانات الشراء</h2>
           <div class="product_description box">
             <div class="product_text">
@@ -118,8 +117,10 @@
             </div>
           </div>
         </div>
-        <!--  قسم المنتج & الالوان المتاحة -->
-        <div class="column is-12">
+      </div>
+      <!--  قسم المنتج & الالوان المتاحة -->
+      <div class="row">
+        <div class="col">
           <h2 class="title pr-3" dir="auto">قسم المنتج & الالوان المتاحة</h2>
           <div class="product_description box">
             <div class="product_text">
@@ -159,8 +160,10 @@
             </div>
           </div>
         </div>
-        <!--   حالة المنتج [ متاح | محجوز | تم نفاز الكمية  ] -->
-        <div class="column is-12">
+      </div>
+      <!--   حالة المنتج [ متاح | محجوز | تم نفاز الكمية  ] -->
+      <div class="row">
+        <div class="col">
           <h2 class="title pr-3" dir="auto">حالة المنتج [ متاح | محجوز | نفاز الكمية ]</h2>
           <div class="product_description box">
             <!-- Product Status -->
@@ -215,8 +218,10 @@
             </div>
           </div>
         </div>
-        <!--  بيانات الكود و الكمية -->
-        <div class="column is-12">
+      </div>
+      <!--  بيانات الكود و الكمية -->
+      <div class="row">
+        <div class="col">
           <h2 class="title pr-3" dir="auto">بيانات الكود و الكمية</h2>
           <div class="product_description box">
             <div class="product_text">
@@ -245,8 +250,10 @@
             </div>
           </div>
         </div>
-        <!--  بيانات اسعار البيع -->
-        <div class="column is-12">
+      </div>
+      <!--  بيانات اسعار البيع -->
+      <div class="row">
+        <div class="col">
           <h2 class="title pr-3" dir="auto">بيانات اسعار البيع</h2>
           <div class="product_description box">
             <div class="product_text">
@@ -305,8 +312,10 @@
             </div>
           </div>
         </div>
-        <!-- 📅 تاريخ آخر تعديل على المنتج  💰 خصم على المنتج بيانات خامة المنتج -->
-        <div class="column is-12">
+      </div>
+      <!-- 📅 تاريخ آخر تعديل على المنتج  💰 خصم على المنتج بيانات خامة المنتج -->
+      <div class="row">
+        <div class="col">
           <h2 class="title pr-3" dir="auto">بيانات خامة المنتج</h2>
           <div class="product_description box">
             <!-- خامة المنتج -->
@@ -350,8 +359,10 @@
             </div>
           </div>
         </div>
-        <!-- SharePage -->
-        <div class="column is-12">
+      </div>
+      <!-- SharePage -->
+      <div class="row">
+        <div class="col">
           <div class="box">
             <!-- <SharePage :pageTitle="pageTitle" :pageUrl="pageUrl"></SharePage> -->
           </div>
@@ -435,55 +446,55 @@ import axios from 'axios'
 
 //
 let backgroundPhotos = [
-  '../../assets/images/Wrappers/1.jpg',
-  '../../assets/images/Wrappers/2.jpg',
-  '../../assets/images/Wrappers/3.jpg',
-  '../../assets/images/Wrappers/4.jpg',
-  '../../assets/images/Wrappers/5.jpg',
-  '../../assets/images/Wrappers/6.jpg',
-  '../../assets/images/Wrappers/7.jpg',
-  '../../assets/images/Wrappers/8.jpg',
-  '../../assets/images/Wrappers/9.jpg',
-  '../../assets/images/Wrappers/10.jpg',
-  '../../assets/images/Wrappers/11.jpg',
-  '../../assets/images/Wrappers/12.jpg',
-  '../../assets/images/Wrappers/13.jpg',
-  '../../assets/images/Wrappers/14.jpg',
-  '../../assets/images/Wrappers/15.jpg',
-  '../../assets/images/Wrappers/16.jpg',
-  '../../assets/images/Wrappers/17.jpg',
-  '../../assets/images/Wrappers/18.jpg',
-  '../../assets/images/Wrappers/19.jpg',
-  '../../assets/images/Wrappers/20.jpg',
-  '../../assets/images/Wrappers/21.jpg',
-  '../../assets/images/Wrappers/22.jpg',
-  '../../assets/images/Wrappers/23.jpg',
-  '../../assets/images/Wrappers/24.jpg',
-  '../../assets/images/Wrappers/25.jpg',
-  '../../assets/images/Wrappers/26.jpg',
-  '../../assets/images/Wrappers/27.jpg',
-  '../../assets/images/Wrappers/28.jpg',
-  '../../assets/images/Wrappers/29.jpg',
-  '../../assets/images/Wrappers/30.jpg',
-  '../../assets/images/Wrappers/31.jpg',
-  '../../assets/images/Wrappers/32.jpg',
-  '../../assets/images/Wrappers/33.jpg',
-  '../../assets/images/Wrappers/34.jpg',
-  '../../assets/images/Wrappers/35.jpg',
-  '../../assets/images/Wrappers/36.png',
-  '../../assets/images/Wrappers/37.png',
-  '../../assets/images/Wrappers/38.jpg',
-  '../../assets/images/Wrappers/39.jpg',
-  '../../assets/images/Wrappers/40.jpg',
-  '../../assets/images/Wrappers/41.png',
-  '../../assets/images/Wrappers/42.png',
-  '../../assets/images/Wrappers/43.png',
-  '../../assets/images/Wrappers/44.png',
-  '../../assets/images/Wrappers/45.png',
-  '../../assets/images/Wrappers/46.png',
-  '../../assets/images/Wrappers/47.png',
-  '../../assets/images/Wrappers/48.png',
-  '../../assets/images/Wrappers/49.png'
+  'tom_and_jerry/src/assets/images/Wrappers/1.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/2.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/3.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/4.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/5.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/6.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/7.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/8.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/9.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/10.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/11.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/12.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/13.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/14.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/15.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/16.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/17.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/18.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/19.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/20.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/21.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/22.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/23.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/24.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/25.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/26.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/27.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/28.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/29.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/30.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/31.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/32.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/33.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/34.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/35.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/36.png',
+  'tom_and_jerry/src/assets/images/Wrappers/37.png',
+  'tom_and_jerry/src/assets/images/Wrappers/38.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/39.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/40.jpg',
+  'tom_and_jerry/src/assets/images/Wrappers/41.png',
+  'tom_and_jerry/src/assets/images/Wrappers/42.png',
+  'tom_and_jerry/src/assets/images/Wrappers/43.png',
+  'tom_and_jerry/src/assets/images/Wrappers/44.png',
+  'tom_and_jerry/src/assets/images/Wrappers/45.png',
+  'tom_and_jerry/src/assets/images/Wrappers/46.png',
+  'tom_and_jerry/src/assets/images/Wrappers/47.png',
+  'tom_and_jerry/src/assets/images/Wrappers/48.png',
+  'tom_and_jerry/src/assets/images/Wrappers/49.png'
 ]
 
 export default {
