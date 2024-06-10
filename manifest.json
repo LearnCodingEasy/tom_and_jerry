@@ -1,7 +1,7 @@
 {
   "name": "Tom And Jerry",
   "short_name": "TomAndJerry",
-  "description": "My Vue.js Application with PWA support",
+  "description": "Tom And Jerry PWA Application",
   "start_url": "index.html",
   "display_override": ["fullscreen", "minimal-ui"],
   "display": "standalone",
